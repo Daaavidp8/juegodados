@@ -6,13 +6,14 @@ class Juego:
     __jugador2 = ""
     __lanzamientos = 0
 
-    def __init__(self, jugador1, jugador2, caras1, caras2, caras3, lanzamientos, intermedios):
+    def __init__(self, jugador1, jugador2, caras1, caras2, caras3,caras4, lanzamientos, intermedios):
         self.set_jugador1(jugador1)
         self.set_jugador2(jugador2)
         self.set_lanzamientos(lanzamientos)
         self.dado1 = dado.Dado(caras1)
         self.dado2 = dado.Dado(caras2)
         self.dado3 = dado.Dado(caras3)
+        self.dado4 = dado.Dado(caras4)
         # Me guardo en un atributo booelano si necesito o no ver los datos intermedios
         self.__intermedios = (intermedios in ("S", "s"))
         self.resultadoJugador1 = 0
@@ -44,22 +45,24 @@ class Juego:
             tirada1 = self.dado1.lanzar()
             tirada2 = self.dado2.lanzar()
             tirada3 = self.dado3.lanzar()
-            self.resultadoJugador1 += (tirada1 + tirada2 + tirada3)
+            tirada4 = self.dado4.lanzar()
+            self.resultadoJugador1 += (tirada1 + tirada2 + tirada3 + tirada4)
 
             if self.__intermedios:
                 print(f"Lanzamiento {lanzamiento + 1}:")
                 print(
-                    f"{self.__jugador1}: {tirada1} {tirada2} {tirada3} ({(tirada1 + tirada2 + tirada3)})")
+                    f"{self.__jugador1}: {tirada1} {tirada2} {tirada3} {tirada4} ({(tirada1 + tirada2 + tirada3 + tirada4)})")
 
             # jugador2
             tirada1 = self.dado1.lanzar()
             tirada2 = self.dado2.lanzar()
             tirada3 = self.dado3.lanzar()
-            self.resultadoJugador2 += (tirada1 + tirada2 + tirada3)
+            tirada4 = self.dado4.lanzar()
+            self.resultadoJugador2 += (tirada1 + tirada2 + tirada3 + tirada4)
 
             if self.__intermedios:
                 print(
-                    f"{self.__jugador2}: {tirada1} {tirada2} {tirada3} ({(tirada1 + tirada2 + tirada3)})")
+                    f"{self.__jugador2}: {tirada1} {tirada2} {tirada3} {tirada4} ({(tirada1 + tirada2 + tirada3 + tirada4)})")
                 print("")
 
     def mostrarPuntuaciones(self):
@@ -67,7 +70,9 @@ class Juego:
         print(f"Jugador 1: {self.__jugador1}")
         print(f"Jugador 2: {self.__jugador2}")
         print(f"Numero de lanzamientos: {self.__lanzamientos}")
-        print(f"Dados: {self.dado1.getCaras()},{self.dado2.getCaras()} y {self.dado3.getCaras()} ")
+        print(f"Dados: {self.dado1.getCaras()},{self.dado2.getCaras()},{self.dado3.getCaras()} y"
+              f" {self.dado4.getCaras()}")
+
         print(f"Puntos jugador 1: {self.resultadoJugador1}")
         print(f"Puntos jugador 2: {self.resultadoJugador2}")
         if self.resultadoJugador1 > self.resultadoJugador2:
