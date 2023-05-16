@@ -20,4 +20,4 @@ class Dado:
             self.__caras_utilizadas.append(fcaras)
             print(self.__caras_utilizadas)
         else:
-            raise Exception("Numero de caras incorrecto")
+            raise Exception("Nombre de cares incorrecte")
