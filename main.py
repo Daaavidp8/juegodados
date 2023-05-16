@@ -1,5 +1,5 @@
 import juego
-
+"""Iniciador del Joc"""
 x = juego.Juego(str(input("Introdueix el nom del primer jugador: ")),
                 str(input("Introdueix el nom del segon jugador: ")),
                 str(input("Introdueix el nom del tercer jugador: ")),
