@@ -74,7 +74,6 @@ class Juego:
                 print(
                     f"{self.__jugador2}: {tirada1} {tirada2} {tirada3} ({(tirada1 + tirada2 + tirada3)})")
 
-
                 # jugador3
                 tirada1 = self.dado1.lanzar()
                 tirada2 = self.dado2.lanzar()
@@ -90,15 +89,17 @@ class Juego:
         print("Resultados:")
         print(f"Jugador 1: {self.__jugador1}")
         print(f"Jugador 2: {self.__jugador2}")
+        print(f"Jugador 2: {self.__jugador3}")
         print(f"Numero de lanzamientos: {self.__lanzamientos}")
         print(f"Dados: {self.dado1.getCaras()},{self.dado2.getCaras()} y {self.dado3.getCaras()} ")
         print(f"Puntos jugador 1: {self.resultadoJugador1}")
         print(f"Puntos jugador 2: {self.resultadoJugador2}")
-        if self.resultadoJugador1 > self.resultadoJugador2:
+        print(f"Puntos jugador 3: {self.resultadoJugador3}")
+        if self.resultadoJugador3 < self.resultadoJugador1 > self.resultadoJugador2:
             print(f"El GANADOR es {self.__jugador1} con {self.resultadoJugador1} puntos")
-        elif self.resultadoJugador1 == self.resultadoJugador2:
-            print("Ha habido un EMPATE")
-        else:
+        elif self.resultadoJugador1 < self.resultadoJugador2 > self.resultadoJugador3:
             print(f"El GANADOR es {self.__jugador2} con {self.resultadoJugador2} puntos")
-        if self.resultadoJugador1 > self.resultadoJugador2 > self.resultadoJugador1:
-            print("El mundo se acaba")
+        elif self.resultadoJugador1 < self.resultadoJugador3 > self.resultadoJugador2:
+            print(f"El GANADOR es {self.__jugador3} con {self.resultadoJugador3} puntos")
+        else:
+            print("Ha habido un triple EMPATE")
